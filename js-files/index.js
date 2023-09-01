@@ -20,11 +20,9 @@ dataAll.forEach(data =>{
 }
 
 const categoryVideo = async(categoryId) => {
-  console.log(categoryId);
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
   const data = await response.json();
   const dataContainerLoop = data.data
-  console.log(dataContainerLoop.length)
   const cardContainer = document.getElementById('card-container')
   cardContainer.innerHTML = ''
   const noVideoCard = document.getElementById('no-video')
@@ -43,10 +41,15 @@ const categoryVideo = async(categoryId) => {
   }
   else{
     dataContainerLoop.forEach(video =>{
+      const postedDate = video.others.posted_date;
+      const { hours, minutes } = postedDate !== "" ? timeConversion(postedDate) : {};
       const videoCard = document.createElement('div');
       videoCard.classList =`card w-full md:w-[320px] bg-base-100 shadow-xl h-[300px]`;
       videoCard.innerHTML=`
       <figure><img src="${video.thumbnail}" /></figure>
+      <div class="flex justify-end -mt-6 text-white"> ${hours !== undefined && minutes !== undefined
+        ? `<p class="bg-black">${hours} hrs ${minutes} min ago</p>`
+        : ''} </p> </div>
       <div class="card-body">
         <div class="flex gap-4">
           <div>
@@ -67,6 +70,15 @@ const categoryVideo = async(categoryId) => {
   }
 
 }
+
+// seconds to hours
+  const timeConversion = (postedDate) => {
+      const integerSecond = parseInt(postedDate);
+    const hours = parseInt(integerSecond / 3600); 
+    const minutes = parseInt((integerSecond  % 3600) / 60);
+    return { hours, minutes };
+    }
+
 
 loadData();
 categoryVideo("1000");
