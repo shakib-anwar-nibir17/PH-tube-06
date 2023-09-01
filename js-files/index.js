@@ -1,4 +1,3 @@
-console.log("hello")
 
 const loadData = async() =>{
   const response = await fetch('https://openapi.programming-hero.com/api/videos/categories');
@@ -7,8 +6,6 @@ const loadData = async() =>{
   displayCategories(dataAll);
   
 }
-
-loadData();
 
 const displayCategories =(dataAll) =>{
 const divContainer = document.getElementById('category-container');
@@ -23,11 +20,14 @@ dataAll.forEach(data =>{
 }
 
 const categoryVideo = async(categoryId) => {
+  console.log(categoryId);
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
   const data = await response.json();
   const dataContainerLoop = data.data
-  console.log(dataContainerLoop)
+  console.log(dataContainerLoop.length)
+  // loop will execute with if else condition
   const cardContainer = document.getElementById('card-container')
+  cardContainer.innerHTML = ''
   dataContainerLoop.forEach(video =>{
     const videoCard = document.createElement('div');
     videoCard.classList =`card w-full md:w-[320px] bg-base-100 shadow-xl h-[300px]`;
@@ -51,3 +51,6 @@ const categoryVideo = async(categoryId) => {
     cardContainer.appendChild(videoCard);
   })
 }
+
+loadData();
+categoryVideo("1000");
