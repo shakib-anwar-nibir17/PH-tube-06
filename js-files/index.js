@@ -25,31 +25,47 @@ const categoryVideo = async(categoryId) => {
   const data = await response.json();
   const dataContainerLoop = data.data
   console.log(dataContainerLoop.length)
-  // loop will execute with if else condition
   const cardContainer = document.getElementById('card-container')
   cardContainer.innerHTML = ''
-  dataContainerLoop.forEach(video =>{
+  const noVideoCard = document.getElementById('no-video')
+  noVideoCard.innerHTML = ''
+  // loop will execute with if else condition
+  if(dataContainerLoop.length === 0){
     const videoCard = document.createElement('div');
-    videoCard.classList =`card w-full md:w-[320px] bg-base-100 shadow-xl h-[300px]`;
-    videoCard.innerHTML=`
-    <figure><img src="${video.thumbnail}" /></figure>
-    <div class="card-body">
-      <div class="flex gap-4">
-        <div>
-       <img class="w-[40px] h-[40px] rounded-full" src="${video.authors[0].profile_picture}" alt="">
-        </div>
-        <div>
-          <h1 class="card-title">${video.title}</h1>
-        <h5 class="card-title text-base">
-        ${video.authors[0].profile_name}
-          <div class="bg-transparent">${video.authors[0].verified ? '<i class="fa-solid fa-certificate" style="color: #0c56d4;"></i>' : ''}</div>
-        </h5>
-        <p>${video.others.views} views</p>
-        </div>
-        </div>
+    videoCard.innerHTML =`
+    <div class="flex flex-cols justify-center items-end h-[300px]">
+    <div> <img src="./resources/Icon.png" alt="">
+    </div>
+    </div>
+    <h1 class="text-3xl font bold mt-4 text-center">Oops!! Sorry, There is no content here</h1>
     `
-    cardContainer.appendChild(videoCard);
-  })
+    noVideoCard.appendChild(videoCard);
+  }
+  else{
+    dataContainerLoop.forEach(video =>{
+      const videoCard = document.createElement('div');
+      videoCard.classList =`card w-full md:w-[320px] bg-base-100 shadow-xl h-[300px]`;
+      videoCard.innerHTML=`
+      <figure><img src="${video.thumbnail}" /></figure>
+      <div class="card-body">
+        <div class="flex gap-4">
+          <div>
+         <img class="w-[40px] h-[40px] rounded-full" src="${video.authors[0].profile_picture}" alt="">
+          </div>
+          <div>
+            <h1 class="card-title">${video.title}</h1>
+          <h5 class="card-title text-base">
+          ${video.authors[0].profile_name}
+            <div class="bg-transparent">${video.authors[0].verified ? '<i class="fa-solid fa-certificate" style="color: #0c56d4;"></i>' : ''}</div>
+          </h5>
+          <p>${video.others.views} views</p>
+          </div>
+          </div>
+      `
+      cardContainer.appendChild(videoCard);
+    })
+  }
+
 }
 
 loadData();
