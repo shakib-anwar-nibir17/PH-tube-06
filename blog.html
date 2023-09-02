@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/9ddd0122c8.js" crossorigin="anonymous"></script>
+  <style>
+    .body{
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="body">
+  <header>
+    <nav class="container mx-auto mt-4">
+      <div class="flex justify-center gap-2">
+        <div><img src="./resources/Logo.png" alt=""></div>
+        <div><h1 class="font-bold text-4xl text-green-700">Blog!!</h1></div>
+      </div>
+    </nav>
+  </header>
+  <main class="container mx-auto px-4 mt-8">
+    <div>
+      <h1 class="font-bold text-base md:text-2xl text-blue-700 text-justify my-4">Discuss the scope of var, let, and const?</h1>
+      <p class="text-sm md:text-xl text-justify my-4"><span class="font-bold">var</span>, <span class="font-bold">let</span>, <span class="font-bold">const</span> are three most common used variable declaration method in JavaScript. All three of these three keywords have similarities in their syntax for declaring variables. Each three is unique on their own and has a variety of use cases. To understand the use cases of var, let and const, the following discussion will talk about the scope of each method.</p>
+      <p class="text-sm md:text-xl text-justify my-4">
+        <span class="font-bold">Scope:</span>
+        <br>
+        Before diving into the discussion for before mentioned methods, its important first have some about scope. Scope means the current context in which the code will be executed. Within a scope the values are visible and can be referenced within that scope. This allows the developer to manipulate the values inside the current scope. Before the introduction of ES6, JavaScript only had two types of scope-
+        <br>
+        <span class="font-bold">1.</span> Function Scope
+        <br>
+        <span class="font-bold">2.</span> Global Scope
+        <br>
+        After the introduction of ES6, as let and const keywords were also introduced, new scope named Block Scope stated to feature. A Block Scope is created with a pair of curly braces (“{ }”).
+      </p>
+      <p class="text-sm md:text-xl text-justify my-4">
+        <span class="font-bold">The scope of ‘var’:</span>
+        <br>
+        <span class="font-bold">var</span> declarations are globally scoped or function scoped. The scope is global when <span class="font-bold">var</span> variable is declared outside of a function. When it is declared inside of the function it’s scope is limited to function scope. <span class="font-bold">var</span> can be redeclare within the same scope and will not result any error. <span class="font-bold">var</span> has very unique feature called hoisting which causes many bugs in the code. And that’s why <span class="font-bold">let</span> and <span class="font-bold">const</span> are now preferred declaration method.
+      </p>
+      <p class="text-sm md:text-xl text-justify my-4">
+        <span class="font-bold">The scope of ‘let’ and ‘const’:</span>
+        <br>
+        Both declaration methods are block scope, meaning they can only accessed within their block. Unlike <span class="font-bold">var</span>, <span class="font-bold">let</span> can not redeclare but <span class="font-bold">let</span> does let you update its value. On the other hand <span class="font-bold">const</span> can neither be updated nor declared.
+      </p>
+    </div>
+    <div>
+      <h1 class="font-bold text-base md:text-2xl text-blue-700 text-justify my-4">Tell us the use cases of null and undefined?</h1>
+      <p class="text-sm md:text-xl text-justify my-4">
+        <span class="font-bold">Use cases of ‘undefined’:</span>
+        <br>
+        <span class="font-bold">1.</span> If a variable has been declared and a value has not been assigned to it , JavaScript automatically sets the value undefined. So undefined is used sometimes as variable initialization.
+        <br>
+        <span class="font-bold">2.</span> When functions are executed, if the function isn’t told explicitly what to return, it undefined as it’s value. This is most common in the case of most function that ends with return.
+        <br>
+        <span class="font-bold">3.</span>Trying to access a object property that doesn’t exist will result in undefined.
+      </p>
+      <p class="text-sm md:text-xl text-justify my-4">
+        <span class="font-bold">Use cases of ‘null’:</span>
+        <br>
+        <span class="font-bold">1.</span> The term null is frequently used to express the lack of a value or to imply that a variable should not have a meaningful value.
+        <br>
+        <span class="font-bold">2.</span> You could set a variable to null in some instances to reset it or to signal that it no longer carries a valid value.
+        <br>
+        <span class="font-bold">3.</span>To indicate that a parameter is purposefully empty or has no value, functions may take null as an input.
+      </p>
+    </div>
+    <div>
+      <h1 class="font-bold text-base md:text-2xl text-blue-700 text-justify my-4">What do you mean by REST API?</h1>
+      <p class="text-sm md:text-xl text-justify my-4">
+        A set of limitations for using in the development of web services are defined by the architectural style known as Representational State Transfer (REST). REST API is a straightforward and flexible method of accessing web services without any processing.
+        Because REST requires less bandwidth and is more appropriate for internet use, it is often preferred to the more reliable Simple Object Access Protocol (SOAP) technology. It is utilized to obtain or provide data from an online service. Through the REST API, only HTTP requests are used for communication.
+        An API is a collection of specifications and protocols used to create and integrate application software. It is also referred to as a contract between an information provider and an information user, because it establishes the content necessary from the consumer (the call) and the material required by the producer (the answer). In other words, if you want to interact with a computer or system to get information or execute a function, an API lets you convey your desires to that system so that it can comprehend and fulfill your request.
+        When a client requests a RESTful API, it sends a representation of the resource's state to the requester or endpoint. This data, or representation, is transmitted through HTTP in one of many formats: JSON (JavaScript Object Notation), HTML, XLT, Python, PHP, or plain text. JSON is the most widely used file format because, despite its name, it is language-independent and understandable by both people and machines.
+
+      </p>
+    </div>
+  </main>
+
+</body>
+
+</html>

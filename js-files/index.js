@@ -11,9 +11,9 @@ const displayCategories =(dataAll) =>{
 const divContainer = document.getElementById('category-container');
 dataAll.forEach(data =>{
   const div = document.createElement('div');
-  div.classList = `bg-base-200 p-2 mx-10 my-2 md:mx-4 md:my-0 border-2 border-green-500`
+  div.classList = `bg-base-200 p-2 mx-10 my-2 md:mx-4 md:my-0 border-2 border-green-500 rounded-lg`
   div.innerHTML =`
-  <a onclick="categoryVideo('${data.category_id}')" class="tab text-black font-base text-xl">${data.category}</a>
+  <a onclick="categoryVideo('${data.category_id}')" class="tab text-black font-base text-base">${data.category}</a>
   `
   divContainer.appendChild(div);
 })
@@ -91,6 +91,14 @@ const displayData = () => {
       })
       displayData(); 
     }
+
+// blog page
+
+function blog() {
+  window.location.href = "blog.html";
+}
+
+
 
 loadData();
 categoryVideo("1000");
