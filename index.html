@@ -1,39 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<html lang="en" data-theme="light">
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      src="https://kit.fontawesome.com/9ddd0122c8.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <header></header>
-    <main>
-      <div class="category-container container mx-auto">
-        <div
-          id="category-container"
-          class="tabs p-5 text-center flex justify-center"
-        ></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/9ddd0122c8.js" crossorigin="anonymous"></script>
+  <style>
+    .body{
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="body">
+  <header>
+    <nav class="container mx-auto">
+      <div class="flex flex-col md:flex-row md:justify-between justify-center items-center gap-4 md:gap-0 px-4 mt-8">
+        <div>
+          <img src="./resources/Logo.png" alt="">
+        </div>
+        <div><button onclick="sortView()" id="sort-btn" class="btn">Sort by view</button></div>
+        <div><button class="btn btn-error bg-[#FF1F3D] px-6 text-white">Blog</button></div>
       </div>
-      <section class="container mx-auto">
-        <div
-          id="card-container"
-          class="px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-2 border-red-500 gap-10 mx-8"
-        ></div>
-        <div id="no-video" class=""></div>
-      </section>
-    </main>
+      <hr class="mt-4">
+    </nav>
+  </header>
+  <main class="container mx-auto">
+    <section>
+      <div id="category-container" class="tabs p-5 text-center items-center flex justify-center border-2 border-blue-500 mx-8">
 
-    <script src="./js-files/index.js"></script>
-  </body>
+      </div>
+    </section>
+
+    <!-- <section class="h-[200px] mt-6 mb-4 border-2 border-pink-500 ">
+
+    </section> -->
+    <section>
+      <div id="card-container" class="px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-2 border-red-500 gap-10 mx-8"></div>
+      <div id="no-video" class=""></div>
+    </section>
+
+  </main>
+
+  <script src="./js-files/index.js"></script>
+</body>
+
 </html>

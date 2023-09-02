@@ -1,19 +1,19 @@
+let videoData = [];
 
 const loadData = async() =>{
   const response = await fetch('https://openapi.programming-hero.com/api/videos/categories');
   const categories = await response.json();
   const dataAll = categories.data
   displayCategories(dataAll);
-  
 }
 
 const displayCategories =(dataAll) =>{
 const divContainer = document.getElementById('category-container');
 dataAll.forEach(data =>{
   const div = document.createElement('div');
-  div.classList = `bg-base-200 mr-10 p-2`
+  div.classList = `bg-base-200 p-2 mx-10 my-2 md:mx-4 md:my-0 border-2 border-green-500`
   div.innerHTML =`
-  <a onclick="categoryVideo('${data.category_id}')" class="tab text-black font-semibold text-xl">${data.category}</a>
+  <a onclick="categoryVideo('${data.category_id}')" class="tab text-black font-base text-xl">${data.category}</a>
   `
   divContainer.appendChild(div);
 })
@@ -22,13 +22,16 @@ dataAll.forEach(data =>{
 const categoryVideo = async(categoryId) => {
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
   const data = await response.json();
-  const dataContainerLoop = data.data
+  videoData = data.data;
+  displayData();
+}
+
+const displayData = () => {
   const cardContainer = document.getElementById('card-container')
   cardContainer.innerHTML = ''
   const noVideoCard = document.getElementById('no-video')
   noVideoCard.innerHTML = ''
-  // loop will execute with if else condition
-  if(dataContainerLoop.length === 0){
+  if(videoData.length === 0){
     const videoCard = document.createElement('div');
     videoCard.innerHTML =`
     <div class="flex flex-cols justify-center items-end h-[300px]">
@@ -40,7 +43,7 @@ const categoryVideo = async(categoryId) => {
     noVideoCard.appendChild(videoCard);
   }
   else{
-    dataContainerLoop.forEach(video =>{
+    videoData.forEach(video =>{
       const postedDate = video.others.posted_date;
       const { hours, minutes } = postedDate !== "" ? timeConversion(postedDate) : {};
       const videoCard = document.createElement('div');
@@ -78,7 +81,17 @@ const categoryVideo = async(categoryId) => {
     const minutes = parseInt((integerSecond  % 3600) / 60);
     return { hours, minutes };
     }
-
+// sort by views
+    const sortView = () => {
+      console.log(videoData);
+      videoData.sort((a,b) =>{
+        const numA = parseInt(a.others.views)
+        const numB = parseInt(b.others.views)
+        return numB - numA;
+      })
+      displayData(); 
+    }
 
 loadData();
 categoryVideo("1000");
+
